@@ -40,8 +40,6 @@ public class YoutubeSearchSteps {
 
     @Then("the user should see the video title as {string}")
     public void the_user_should_see_the_video_title_as(String expectedTitle) {
-        System.out.println("Expected title: " + expectedTitle);
-        System.out.println("Actual title: " + VideoTitle.displayed().answeredBy(user));
         user.should(seeThat(VideoTitle.displayed(), is(expectedTitle)));
     }
 }

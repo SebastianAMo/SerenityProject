@@ -23,7 +23,7 @@ public class VideoTitle implements Question<String> {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Title: " + BrowseTheWeb.as(actor).find(YouTubePage.VIDEO_TITLE).getText());
+
         return BrowseTheWeb.as(actor).find(YouTubePage.VIDEO_TITLE).getText();
     }
 }
