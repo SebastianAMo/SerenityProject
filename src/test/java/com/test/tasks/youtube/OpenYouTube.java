@@ -1,4 +1,4 @@
-package com.test.tasks;
+package com.test.tasks.youtube;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;

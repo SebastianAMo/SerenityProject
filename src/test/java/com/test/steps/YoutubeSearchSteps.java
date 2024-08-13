@@ -1,7 +1,8 @@
 package com.test.steps;
 
-import com.test.tasks.OpenYouTube;
-import com.test.tasks.SearchSong;
+import com.test.tasks.youtube.OpenYouTube;
+import com.test.tasks.youtube.SearchSong;
+import com.test.tasks.youtube.SelectFirstResult;
 import com.test.questions.VideoTitle;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,9 +13,9 @@ import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.annotations.Managed;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
-public class youtubeSearchSteps {
+public class YoutubeSearchSteps {
 
 
     @Managed(driver = "chrome")
@@ -34,12 +35,13 @@ public class youtubeSearchSteps {
 
     @Then("the user selects the first result")
     public void the_user_selects_the_first_result() {
-        user.attemptsTo(SearchSong.selectFirstResult());
+        user.attemptsTo(SelectFirstResult.video());
     }
 
     @Then("the user should see the video title as {string}")
     public void the_user_should_see_the_video_title_as(String expectedTitle) {
-        String actualTitle = VideoTitle.displayed().answeredBy(user);
-        System.out.println("Actual Title: " + actualTitle);
+        System.out.println("Expected title: " + expectedTitle);
+        System.out.println("Actual title: " + VideoTitle.displayed().answeredBy(user));
+        user.should(seeThat(VideoTitle.displayed(), is(expectedTitle)));
     }
 }

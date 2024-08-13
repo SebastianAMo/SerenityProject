@@ -1,5 +1,6 @@
 package com.test.questions;
 
+import com.test.ui.YouTubePage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -16,7 +17,13 @@ public class VideoTitle implements Question<String> {
 
     @Override
     public String answeredBy(Actor actor) {
-        WaitUntil.the(By.xpath("//*[@id=\"title\"]/h1/yt-formatted-string"), isVisible()).forNoMoreThan(10).seconds();
-        return BrowseTheWeb.as(actor).find(By.xpath("//*[@id=\"title\"]/h1/yt-formatted-string")).getText();
+        WaitUntil.the(YouTubePage.VIDEO_TITLE, isVisible()).forNoMoreThan(20).seconds();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("Title: " + BrowseTheWeb.as(actor).find(YouTubePage.VIDEO_TITLE).getText());
+        return BrowseTheWeb.as(actor).find(YouTubePage.VIDEO_TITLE).getText();
     }
 }
