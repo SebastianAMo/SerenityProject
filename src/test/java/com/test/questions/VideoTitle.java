@@ -16,7 +16,7 @@ public class VideoTitle implements Question<String> {
 
     @Override
     public String answeredBy(Actor actor) {
-        WaitUntil.the(By.cssSelector("h1.title"), isVisible()).forNoMoreThan(10).seconds();
+        WaitUntil.the(By.xpath("//*[@id=\"title\"]/h1/yt-formatted-string"), isVisible()).forNoMoreThan(10).seconds();
         return BrowseTheWeb.as(actor).find(By.xpath("//*[@id=\"title\"]/h1/yt-formatted-string")).getText();
     }
 }
