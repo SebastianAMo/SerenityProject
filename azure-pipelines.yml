@@ -24,3 +24,37 @@ steps:
     sudo apt-get update
     sudo apt-get install -y chromium-chromedriver
   displayName: 'Instalar ChromeDriver'
+
+- task: Maven@4
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
+    jdkArchitectureOption: 'x64'
+    goals: 'verify'   # Primero ejecuta las pruebas
+
+- task: Maven@4
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
+    jdkArchitectureOption: 'x64'
+    goals: 'serenity:aggregate'   # Luego genera el reporte de Serenity
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: '**/target/site/serenity/*.xml'
+    testRunTitle: 'Serenity Test Results'
+
+- task: CopyFiles@2
+  inputs:
+    contents: '**/target/site/serenity/**/*'
+    targetFolder: '$(Build.ArtifactStagingDirectory)/serenity'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(Build.ArtifactStagingDirectory)/serenity'
+    artifactName: 'SerenityReports'
+    publishLocation: 'Container'
