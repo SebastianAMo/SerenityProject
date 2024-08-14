@@ -4,6 +4,7 @@ import com.test.tasks.youtube.OpenYouTube;
 import com.test.tasks.youtube.SearchSong;
 import com.test.tasks.youtube.SelectFirstResult;
 import com.test.questions.VideoTitle;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -33,7 +34,7 @@ public class YoutubeSearchSteps {
         user.attemptsTo(SearchSong.named(songName));
     }
 
-    @Then("the user selects the first result")
+    @And("the user selects the first result")
     public void the_user_selects_the_first_result() {
         user.attemptsTo(SelectFirstResult.video());
     }

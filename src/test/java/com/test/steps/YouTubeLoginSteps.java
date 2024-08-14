@@ -3,6 +3,7 @@ package com.test.steps;
 import com.test.tasks.youtube.ClickOnSignIn;
 import com.test.tasks.youtube.FillLoginForm;
 import com.test.questions.WelcomMessage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
@@ -20,7 +21,7 @@ public class YouTubeLoginSteps {
 
     }
 
-    @When("the user fills in the login form with valid credentials")
+    @And("the user fills in the login form with valid credentials")
     public void userFillsInLoginForm(){
         user.attemptsTo(FillLoginForm.withCredentials("sebastian.agudelo2@utp.edu.co", "your_password"));
     }
