@@ -34,4 +34,6 @@ public class WikiPage {
     public static final Target CREATE_ACCOUNT_BUTTON_SUBMIT = Target.the("Create your account button")
             .located(By.id("wpCreateaccount"));
 
+    public static final Target CAPTCHA_INPUT = Target.the("CAPTCHA input field").located(By.xpath("//*[@id=\"mw-input-captchaWord\"]"));
+
 }

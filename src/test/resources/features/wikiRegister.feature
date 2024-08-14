@@ -4,4 +4,5 @@ Feature: Account Creation on Wikipedia
     Given the user is on the Wikipedia homepage
     When the user selects the "Create an account" option
     And the user completes the form but leaves the CAPTCHA field empty
-    Then the user submits the form by clicking "Create your account"
+    And the user submits the form by clicking "Create your account"
+    Then the user should see a message indicating that the CAPTCHA field is required
