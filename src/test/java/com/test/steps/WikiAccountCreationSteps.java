@@ -32,7 +32,7 @@ public class WikiAccountCreationSteps {
 
 
     @When("the user selects the {string} option")
-    public void theUserSelectsCreateAccountOption(String option) {
+    public void theUserSelectsCreateAccountOption() {
         user.attemptsTo(OpenAccountCreationPage.onWikipedia());
     }
 
@@ -42,7 +42,7 @@ public class WikiAccountCreationSteps {
     }
 
     @And("the user submits the form by clicking {string}")
-    public void theUserSubmitsTheForm(String button) {
+    public void theUserSubmitsTheForm() {
         user.attemptsTo(SubmitAccountCreationForm.now());
     }
 
