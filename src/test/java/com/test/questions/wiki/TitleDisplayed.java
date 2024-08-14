@@ -1,4 +1,4 @@
-package com.test.questions;
+package com.test.questions.wiki;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;

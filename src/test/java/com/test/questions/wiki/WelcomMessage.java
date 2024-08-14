@@ -1,4 +1,4 @@
-package com.test.questions;
+package com.test.questions.wiki;
 
 import com.test.ui.YouTubePage;
 import net.serenitybdd.screenplay.Actor;

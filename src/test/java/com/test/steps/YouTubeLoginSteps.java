@@ -2,7 +2,7 @@ package com.test.steps;
 
 import com.test.tasks.youtube.ClickOnSignIn;
 import com.test.tasks.youtube.FillLoginForm;
-import com.test.questions.WelcomMessage;
+import com.test.questions.wiki.WelcomMessage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

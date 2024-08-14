@@ -1,11 +1,10 @@
-package com.test.questions;
+package com.test.questions.youtube;
 
 import com.test.ui.YouTubePage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import org.openqa.selenium.By;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 

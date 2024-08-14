@@ -1,6 +1,6 @@
 package com.test.steps;
 
-import com.test.questions.WikiTitle;
+import com.test.questions.wiki.WikiTitle;
 import com.test.tasks.wiki.OpenWikipedia;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

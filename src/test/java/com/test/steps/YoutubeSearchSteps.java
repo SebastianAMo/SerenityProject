@@ -3,7 +3,7 @@ package com.test.steps;
 import com.test.tasks.youtube.OpenYouTube;
 import com.test.tasks.youtube.SearchSong;
 import com.test.tasks.youtube.SelectFirstResult;
-import com.test.questions.VideoTitle;
+import com.test.questions.youtube.VideoTitle;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

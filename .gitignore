@@ -1,5 +1,12 @@
+# Ignorar el directorio target
 target/
 !.mvn/wrapper/maven-wrapper.jar
+
+# Incluir específicamente el reporte de Serenity
+!**/target/site/
+!**/target/site/serenity/
+
+# Ignorar otros directorios target dentro de src/main y src/test
 !**/src/main/**/target/
 !**/src/test/**/target/
 

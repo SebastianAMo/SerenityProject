@@ -3,7 +3,7 @@ package com.test.steps;
 import com.test.tasks.wiki.OpenWikipedia;
 import com.test.tasks.wiki.SearchForTerm;
 import com.test.tasks.wiki.ScrollToSection;
-import com.test.questions.TitleDisplayed;
+import com.test.questions.wiki.TitleDisplayed;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
