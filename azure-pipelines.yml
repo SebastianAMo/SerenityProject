@@ -25,7 +25,7 @@ steps:
       mavenPomFile: 'pom.xml'
       mavenOptions: '-Xmx3072m'
       javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.8'
+      jdkVersionOption: '1.17'
       jdkArchitectureOption: 'x64'
       goals: 'verify'   # Primero ejecuta las pruebas
 
@@ -35,7 +35,7 @@ steps:
       mavenPomFile: 'pom.xml'
       mavenOptions: '-Xmx3072m'
       javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.8'
+      jdkVersionOption: '1.17'
       jdkArchitectureOption: 'x64'
       goals: 'serenity:aggregate'   # Luego genera el reporte de Serenity
 
