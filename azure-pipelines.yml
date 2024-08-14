@@ -1,10 +1,30 @@
 trigger:
-- test
+- tester
 
 pool:
   vmImage: ubuntu-latest
 
 steps:
+- script: |
+    google-chrome --version || echo "Google Chrome no está instalado"
+  displayName: 'Verificar la instalación de Google Chrome'
+
+- script: |
+    chromedriver --version || echo "ChromeDriver no está instalado"
+  displayName: 'Verificar la instalación de ChromeDriver'
+
+# Si Chrome o ChromeDriver no están instalados, estos pasos los instalarán:
+- script: |
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome-stable_current_amd64.deb
+    sudo apt-get install -f
+  displayName: 'Instalar Google Chrome'
+
+- script: |
+    sudo apt-get update
+    sudo apt-get install -y chromium-chromedriver
+  displayName: 'Instalar ChromeDriver'
+
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
