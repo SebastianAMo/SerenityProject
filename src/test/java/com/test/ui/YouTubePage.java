@@ -22,10 +22,11 @@ public class YouTubePage {
     public static final Target NEXT_BUTTON = Target.the("next button")
             .located(By.id("identifierNext"));
     public static final Target PASSWORD_FIELD = Target.the("password field")
-            .located(By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input"));
+            .located(By.xpath("//input[@type='password' and (@name='password' or @id='password' or @placeholder='Ingresa tu contraseña')]"));
+
     public static final Target SIGN_IN_BUTTON = Target.the("sign in button")
             .located(By.id("passwordNext"));
 
-    public static final Target WELCOME_MESSAGE = Target.the("welcome message")
-            .located(By.xpath("//*[@id=\"headingText\"]/span"));
 }
+
+
