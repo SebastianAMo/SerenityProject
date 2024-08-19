@@ -1,19 +1,7 @@
 # Ignorar el directorio target
 !.mvn/wrapper/maven-wrapper.jar
 
-# Incluir específicamente el reporte de Serenity
-!**/target/site/
-!**/target/site/serenity/
-
-target/classes/
-target/test-classes/
-target/maven-archiver/
-target/maven-status/
-target/surefire-reports/
-target/failsafe-reports/
-target/generated-sources/
-target/generated-test-sources/
-target/AutomatedTesting-1.0-SNAPSHOT.jar
+target/*
 
 # Ignorar otros directorios target dentro de src/main y src/test
 !**/src/main/**/target/
