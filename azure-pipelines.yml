@@ -46,14 +46,14 @@ steps:
       testRunTitle: 'Serenity Test Results'
 
   # Copia los archivos del reporte de Serenity
-  - task: CopyFiles@2
-    inputs:
-      contents: '**/target/site/serenity/**/*'
-      targetFolder: '$(Build.ArtifactStagingDirectory)/serenity'
+  # - task: CopyFiles@2
+  #   inputs:
+  #     contents: '**/target/site/serenity/**/*'
+  #     targetFolder: '$(Build.ArtifactStagingDirectory)/serenity'
 
   # Publica los artefactos del build
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathToPublish: '$(Build.ArtifactStagingDirectory)/serenity'
-      artifactName: 'SerenityReports'
-      publishLocation: 'Container'
+  # - task: PublishBuildArtifacts@1
+  #   inputs:
+  #     pathToPublish: '$(Build.ArtifactStagingDirectory)/serenity'
+  #     artifactName: 'SerenityReports'
+  #     publishLocation: 'Container'

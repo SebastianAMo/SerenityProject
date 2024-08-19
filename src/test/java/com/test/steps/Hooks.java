@@ -23,6 +23,6 @@ public class Hooks {
 
     @After
     public void tearDown() {
-        // TODO: Add code to close the browser
+        OnStage.drawTheCurtain();
     }
 }
