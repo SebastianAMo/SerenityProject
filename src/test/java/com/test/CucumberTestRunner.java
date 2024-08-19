@@ -8,7 +8,8 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "com.test.steps",
-        snippets = CucumberOptions.SnippetType.CAMELCASE
+        snippets = CucumberOptions.SnippetType.CAMELCASE,
+        tags = "@wiki or @youtube"
 )
 public class CucumberTestRunner {
 }
