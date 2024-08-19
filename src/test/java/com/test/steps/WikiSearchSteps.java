@@ -1,6 +1,6 @@
 package com.test.steps;
 
-import com.test.tasks.wiki.OpenWikipedia;
+import com.test.interactions.OpenPage;
 import com.test.tasks.wiki.SearchForTerm;
 import com.test.tasks.wiki.ScrollToSection;
 import com.test.questions.wiki.TitleDisplayed;
@@ -24,7 +24,7 @@ public class WikiSearchSteps {
     @Given("the user is on the Wikipedia")
     public void theUserIsOnTheWikipediaHomepage() {
         user.can(BrowseTheWeb.with(hisBrowser));
-        user.attemptsTo(OpenWikipedia.homepage());
+        user.attemptsTo(OpenPage.at("https://es.wikipedia.org/wiki/Wikipedia:Portada"));
     }
 
     @When("the user performs a search for the term {string}")

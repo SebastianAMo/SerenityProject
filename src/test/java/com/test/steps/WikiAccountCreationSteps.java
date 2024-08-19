@@ -1,8 +1,8 @@
 package com.test.steps;
 
+import com.test.interactions.OpenPage;
 import com.test.tasks.wiki.OpenAccountCreationPage;
 import com.test.tasks.wiki.FillAccountCreationFormWithoutCaptcha;
-import com.test.tasks.wiki.OpenWikipedia;
 import com.test.tasks.wiki.SubmitAccountCreationForm;
 import com.test.questions.wiki.CaptchaIsRequired;
 
@@ -27,11 +27,11 @@ public class WikiAccountCreationSteps {
     @Given("the user is on the Wikipedia homepage")
     public void theUserIsOnTheWikipediaHomepage() {
         user.can(BrowseTheWeb.with(hisBrowser));
-        user.attemptsTo(OpenWikipedia.homepage());
+        user.attemptsTo(OpenPage.at("https://es.wikipedia.org/wiki/Wikipedia:Portada"));
     }
 
 
-    @When("the user selects the {string} option")
+    @When("the user selects the Create an account option")
     public void theUserSelectsCreateAccountOption() {
         user.attemptsTo(OpenAccountCreationPage.onWikipedia());
     }
@@ -41,7 +41,7 @@ public class WikiAccountCreationSteps {
         user.attemptsTo(FillAccountCreationFormWithoutCaptcha.withDetails("TestUser", "TestPass123", "TestPass123", "test@example.com"));
     }
 
-    @And("the user submits the form by clicking {string}")
+    @And("the user submits the form by clicking Create your account")
     public void theUserSubmitsTheForm() {
         user.attemptsTo(SubmitAccountCreationForm.now());
     }

@@ -1,6 +1,6 @@
 package com.test.steps;
 
-import com.test.tasks.youtube.OpenYouTube;
+import com.test.interactions.OpenPage;
 import com.test.tasks.youtube.SearchSong;
 import com.test.tasks.youtube.SelectFirstResult;
 import com.test.questions.youtube.VideoTitle;
@@ -26,7 +26,7 @@ public class YoutubeSearchSteps {
     public void the_user_is_on_the_YouTube_homepage() {
         OnStage.setTheStage(new OnlineCast());
         user = OnStage.theActorCalled("User");
-        user.attemptsTo(OpenYouTube.homePage());
+        user.attemptsTo(OpenPage.at("https://www.youtube.com/?themeRefresh=1"));
     }
 
     @When("the user searches for {string}")

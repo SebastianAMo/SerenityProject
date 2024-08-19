@@ -1,5 +1,6 @@
 Feature: Search and Validate Title on Wikipedia
 
+  @wiki
   Scenario: The user searches for the word "Sistema" and validates "CEEM Analysis"
     Given the user is on the Wikipedia
     When the user performs a search for the term "Sistema"

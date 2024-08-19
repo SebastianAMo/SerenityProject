@@ -1,7 +1,7 @@
 package com.test.steps;
 
+import com.test.interactions.OpenPage;
 import com.test.questions.wiki.WikiTitle;
-import com.test.tasks.wiki.OpenWikipedia;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import net.serenitybdd.annotations.Managed;
@@ -21,7 +21,7 @@ public class WikiTitleSteps {
     public void theUserIsOnTheWikipediaHomepage(String url) {
         OnStage.setTheStage(new OnlineCast());
         user = OnStage.theActorCalled("User");
-        user.attemptsTo(OpenWikipedia.homepage());
+        user.attemptsTo(OpenPage.at("https://es.wikipedia.org/wiki/Wikipedia:Portada"));
 
     }
 

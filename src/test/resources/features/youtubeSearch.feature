@@ -1,5 +1,6 @@
 Feature: Song Search on YouTube
 
+  @youtube
   Scenario: The user searches for the song "Locked out of heaven" and validates the search result
     Given the user is on the YouTube homepage
     When the user searches for "Locked out of heaven"
