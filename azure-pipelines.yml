@@ -1,45 +1,59 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
-- master
+  - master
 
 pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Maven@4
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    goals: 'verify'   # Primero ejecuta las pruebas
+  - script: |
+      wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      sudo dpkg -i google-chrome-stable_current_amd64.deb
+      sudo apt-get install -f
+      sudo apt-get update
+      sudo apt-get install -y chromium-chromedriver
+      sudo ln -s /usr/bin/chromedriver /usr/local/bin/chromedriver
+    displayName: 'Instalar Google Chrome y ChromeDriver'
 
-- task: Maven@4
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    goals: 'serenity:aggregate'   # Luego genera el reporte de Serenity
+  - script: |
+      google-chrome --version
+      chromedriver --version
+    displayName: 'Verificar instalación de Google Chrome y ChromeDriver'
 
-- task: PublishTestResults@2
-  inputs:
-    testResultsFiles: '**/target/site/serenity/*.xml'
-    testRunTitle: 'Serenity Test Results'
+  # Ejecuta las pruebas usando Maven
+  - task: Maven@4
+    inputs:
+      mavenPomFile: 'pom.xml'
+      mavenOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.17'
+      jdkArchitectureOption: 'x64'
+      goals: 'verify'   # Primero ejecuta las pruebas
 
-- task: CopyFiles@2
-  inputs:
-    contents: '**/target/site/serenity/**/*'
-    targetFolder: '$(Build.ArtifactStagingDirectory)/serenity'
+  # Genera el reporte de Serenity
+  - task: Maven@4
+    inputs:
+      mavenPomFile: 'pom.xml'
+      mavenOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.17'
+      jdkArchitectureOption: 'x64'
+      goals: 'serenity:aggregate'   # Luego genera el reporte de Serenity
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: '$(Build.ArtifactStagingDirectory)/serenity'
-    artifactName: 'SerenityReports'
-    publishLocation: 'Container'
+  # Publica los resultados de las pruebas
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: '**/target/site/serenity/*.xml'
+      testRunTitle: 'Serenity Test Results'
+
+  # Copia los archivos del reporte de Serenity
+  - task: CopyFiles@2
+    inputs:
+      contents: '**/target/site/serenity/**/*'
+      targetFolder: '$(Build.ArtifactStagingDirectory)/serenity'
+
+  # Publica los artefactos del build
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)/serenity'
+      artifactName: 'SerenityReports'
+      publishLocation: 'Container'
